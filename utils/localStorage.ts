@@ -8,3 +8,7 @@ export const getLocalStorageItem = () => {
 export const setLocalStorageItem = (token: string) => {
   localStorage.setItem(TOKEN, token);
 };
+
+export const removeLocalStorageItem = () => {
+  localStorage.removeItem(TOKEN);
+};

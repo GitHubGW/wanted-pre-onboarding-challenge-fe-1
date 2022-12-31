@@ -1,9 +1,14 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { getLocalStorageItem } from "utils/localStorage";
+import { useEffect, useCallback } from "react";
+import { getLocalStorageItem, removeLocalStorageItem } from "utils/localStorage";
 
 const HomePage = () => {
   const router = useRouter();
+
+  const handleLogout = useCallback(() => {
+    removeLocalStorageItem();
+    router.replace("/auth");
+  }, [router]);
 
   useEffect(() => {
     const token = getLocalStorageItem();
@@ -13,7 +18,12 @@ const HomePage = () => {
     }
   }, [router]);
 
-  return <div>HomePage</div>;
+  return (
+    <div>
+      <h1>HomePage</h1>
+      <button onClick={handleLogout}>로그아웃</button>
+    </div>
+  );
 };
 
 export default HomePage;
