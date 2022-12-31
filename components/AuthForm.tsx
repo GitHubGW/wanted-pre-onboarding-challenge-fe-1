@@ -59,7 +59,7 @@ const AuthForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onValid)} className="border-gray-200 rounded-2xl bg-white px-10 py-8 shadow-xl w-96">
-      <h1 className="font-bold text-2xl text-center">{isSignUp ? "Sign Up" : "Login"}</h1>
+      <h2 className="font-bold text-2xl text-center">{isSignUp ? "Sign Up" : "Login"}</h2>
       <div className="mt-6 flex flex-col gap-3">
         <label htmlFor="emailInput">
           <div className="text-sm mb-1">Email</div>
@@ -79,7 +79,7 @@ const AuthForm = () => {
           <FormError text={errors.email?.message} />
         </label>
         <label htmlFor="passwordInput">
-          <div className="text-sm  mb-1">Password</div>
+          <div className="text-sm mb-1">Password</div>
           <input
             {...register("password", {
               required: "비밀번호는 필수입니다.",
