@@ -1,0 +1,21 @@
+export interface SignUpParams {
+  email: string;
+  password: string;
+}
+
+export interface SignUpResponse {
+  message: string;
+  token: string;
+  details?: string;
+}
+
+export interface LoginParams {
+  email: string;
+  password: string;
+}
+
+export interface LoginResponse {
+  message: string;
+  token: string;
+  details?: string;
+}

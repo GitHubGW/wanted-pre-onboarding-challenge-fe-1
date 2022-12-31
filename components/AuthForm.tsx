@@ -1,7 +1,10 @@
 import { AUTH_STATE } from "constants/auth";
+import { useRouter } from "next/router";
+import useAuthMutate from "queries/useAuthMutate";
 import { useCallback } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { setLocalStorageItem } from "utils/localStorage";
 import FormError from "./FormError";
 
 interface FormData {
@@ -16,10 +19,33 @@ const AuthForm = () => {
     reset,
     formState: { errors, isValid },
   } = useForm<FormData>({ mode: "onChange", defaultValues: { email: "", password: "" } });
-  const [status, setStatus] = useState(AUTH_STATE.SIGN_UP);
+  const router = useRouter();
+  const [status, setStatus] = useState(AUTH_STATE.LOGIN);
   const isSignUp = status === AUTH_STATE.SIGN_UP;
+  const { useSignUp, useLogin } = useAuthMutate();
+  const { mutateAsync: signUpMutateAsync, data: signUpData } = useSignUp();
+  const { mutateAsync: loginMutateAsync, data: loginData } = useLogin();
 
-  const onValid = useCallback(() => {}, []);
+  const onValid = useCallback(
+    async (formData: FormData) => {
+      if (status === AUTH_STATE.SIGN_UP) {
+        const result = await signUpMutateAsync(formData);
+        if (result.token) {
+          reset();
+          setLocalStorageItem(result.token);
+          setStatus(AUTH_STATE.LOGIN);
+        }
+      } else {
+        const result = await loginMutateAsync(formData);
+        if (result.token) {
+          reset();
+          setLocalStorageItem(result.token);
+          router.push("/");
+        }
+      }
+    },
+    [status, reset, router, signUpMutateAsync, loginMutateAsync]
+  );
 
   const handleSetSignUp = useCallback(() => {
     reset();
@@ -50,7 +76,7 @@ const AuthForm = () => {
             id="emailInput"
             className="border border-gray-300 w-full rounded-md p-1.5"
           />
-          {errors.email?.message && <FormError text={errors.email.message} />}
+          <FormError text={errors.email?.message} />
         </label>
         <label htmlFor="passwordInput">
           <div className="text-sm  mb-1">Password</div>
@@ -65,7 +91,7 @@ const AuthForm = () => {
             id="passwordInput"
             className="border border-gray-300 w-full rounded-md p-1.5"
           />
-          {errors.password?.message && <FormError text={errors.password.message} />}
+          <FormError text={errors.password?.message} />
         </label>
       </div>
       <div className="flex flex-col gap-1.5 mt-6">
@@ -76,6 +102,7 @@ const AuthForm = () => {
           {isSignUp ? "이미 계정이 있으신가요?" : "계정이 없으신가요?"}
         </button>
       </div>
+      {(signUpData?.details || loginData?.details) && <div className="text-red-500 font-bold text-center mt-4 text-base">{signUpData?.details || loginData?.details}</div>}
     </form>
   );
 };
