@@ -15,10 +15,14 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
+      "public/*": ["./public/*"],
       "styles/*": ["./styles/*"],
-      "libs/*": ["./libs/*"],
       "components/*": ["./components/*"],
-      "public/*": ["./public/*"]
+      "constants/*": ["./constants/*"],
+      "utils/*": ["./utils/*"],
+      "api/*": ["./api/*"],
+      "queries/*": ["./queries/*"],
+      "types/*": ["./types/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
