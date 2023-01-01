@@ -17,9 +17,9 @@ const TodoItem = ({ id, title, createdAt }: TodoItemProps) => {
   }, [deleteMutate, id]);
 
   return (
-    <div className="bg-gray-100 hover:bg-gray-200 cursor-pointer rounded-lg p-2.5 flex justify-between">
-      <Link href={`/todos/${id}`}>
-        <h3 className="font-bold text-lg">{title.substring(0, 15)}</h3>
+    <div className="bg-gray-100 hover:bg-gray-200 cursor-pointer rounded-lg p-2.5 flex">
+      <Link href={`/todos/${id}`} className="w-full">
+        <h3 className="font-bold text-lg">{`${title.length < 20 ? title : `${title.substring(0, 20)}...`}`}</h3>
         <span className="text-xs text-gray-400">{new Date(createdAt).toLocaleString()}</span>
       </Link>
       <div className="flex items-center gap-3">

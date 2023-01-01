@@ -7,7 +7,7 @@ interface MainLayoutProps {
 
 const MainLayout = ({ pageTitle, children }: MainLayoutProps) => {
   return (
-    <div className="flex justify-center items-center h-screen bg-red-200">
+    <div className="flex justify-center items-center h-screen bg-blue-200">
       <Head>
         <title>{pageTitle}</title>
       </Head>

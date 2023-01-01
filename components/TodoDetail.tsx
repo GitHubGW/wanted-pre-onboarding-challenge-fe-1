@@ -9,7 +9,6 @@ const TodoDetail = () => {
   const [isUpdating, setIsUpdating] = useState(false);
   const { useGetTodoById } = useTodoQuery();
   const { data: todoData } = useGetTodoById({ id: String(router.query.id) });
-  const isDetailPage = router.asPath.includes("todos");
 
   const handleToggleTodo = useCallback(() => {
     setIsUpdating((prev) => !prev);
@@ -23,7 +22,7 @@ const TodoDetail = () => {
         <div>
           <div className="relative">
             <h2 className="font-bold text-2xl text-center">Todo Detail</h2>
-            {isDetailPage && !isUpdating && (
+            {todoData?.data && !isUpdating && (
               <button onClick={handleToggleTodo} type="button" className="text-sm absolute top-0 right-0 p-2.5 bg-blue-500 hover:bg-blue-600 rounded-md text-white">
                 수정하기
               </button>
