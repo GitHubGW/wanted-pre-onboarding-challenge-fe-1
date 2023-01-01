@@ -5,25 +5,21 @@ import { GetTodoByIdParams } from "types/todo";
 
 const useTodoQuery = () => {
   const useGetTodos = () => {
-    const result = useQuery({
+    return useQuery({
       queryKey: QUERY_KEYS.TODO.GET_TODOS(),
       queryFn: () => TodoApi.getTodos(),
     });
-    return result;
   };
 
   const useGetTodoById = (params: GetTodoByIdParams) => {
-    const result = useQuery({
+    return useQuery({
       queryKey: QUERY_KEYS.TODO.GET_TODO_BY_ID(params.id),
       queryFn: () => TodoApi.getTodoById({ id: params.id }),
+      enabled: params.id !== "undefined",
     });
-    return result;
   };
 
-  return {
-    useGetTodos,
-    useGetTodoById,
-  };
+  return { useGetTodos, useGetTodoById };
 };
 
 export default useTodoQuery;
