@@ -17,3 +17,30 @@ export interface GetTodoByIdParams {
 export interface GetTodoByIdResponse {
   data: Todo;
 }
+
+export interface CreateTodoParams {
+  title: string;
+  content: string;
+}
+
+export interface CreateTodoResponse {
+  data: Todo;
+}
+
+export interface UpdateTodoParams {
+  id: string;
+  title: string;
+  content: string;
+}
+
+export interface UpdateTodoResponse {
+  data: Todo;
+}
+
+export interface DeleteTodoParams {
+  id: string;
+}
+
+export interface DeleteTodoResponse {
+  data: null;
+}
