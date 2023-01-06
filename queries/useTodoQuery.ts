@@ -4,14 +4,14 @@ import { useQuery } from "react-query";
 import { GetTodoByIdParams } from "types/todo";
 
 const useTodoQuery = () => {
-  const useGetTodos = () => {
+  const useGetTodosQuery = () => {
     return useQuery({
       queryKey: QUERY_KEYS.TODO.GET_TODOS(),
       queryFn: () => TodoApi.getTodos(),
     });
   };
 
-  const useGetTodoById = (params: GetTodoByIdParams) => {
+  const useGetTodoByIdQuery = (params: GetTodoByIdParams) => {
     return useQuery({
       queryKey: QUERY_KEYS.TODO.GET_TODO_BY_ID(params.id),
       queryFn: () => TodoApi.getTodoById({ id: params.id }),
@@ -19,7 +19,7 @@ const useTodoQuery = () => {
     });
   };
 
-  return { useGetTodos, useGetTodoById };
+  return { useGetTodosQuery, useGetTodoByIdQuery };
 };
 
 export default useTodoQuery;

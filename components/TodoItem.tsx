@@ -1,5 +1,5 @@
 import Link from "next/link";
-import useTodoMutate from "queries/useTodoMutate";
+import useTodoMutation from "queries/useTodoMutation";
 import { useCallback } from "react";
 
 interface TodoItemProps {
@@ -9,8 +9,8 @@ interface TodoItemProps {
 }
 
 const TodoItem = ({ id, title, createdAt }: TodoItemProps) => {
-  const { useDeleteTodo } = useTodoMutate();
-  const { mutate: deleteMutate } = useDeleteTodo();
+  const { useDeleteTodoMutation } = useTodoMutation();
+  const { mutate: deleteMutate } = useDeleteTodoMutation();
 
   const handleDelete = useCallback(() => {
     deleteMutate({ id });

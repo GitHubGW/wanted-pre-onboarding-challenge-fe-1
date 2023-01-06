@@ -7,8 +7,8 @@ import TodoForm from "./TodoForm";
 const TodoDetail = () => {
   const router = useRouter();
   const [isUpdating, setIsUpdating] = useState(false);
-  const { useGetTodoById } = useTodoQuery();
-  const { data: todoData } = useGetTodoById({ id: String(router.query.id) });
+  const { useGetTodoByIdQuery } = useTodoQuery();
+  const { data: todoData } = useGetTodoByIdQuery({ id: String(router.query.id) });
 
   const handleToggleTodo = useCallback(() => {
     setIsUpdating((prev) => !prev);

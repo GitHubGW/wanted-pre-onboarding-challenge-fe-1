@@ -1,4 +1,4 @@
-import useTodoMutate from "queries/useTodoMutate";
+import useTodoMutation from "queries/useTodoMutation";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 
@@ -22,9 +22,9 @@ const TodoForm = ({ isUpdating, id, title, content, handleToggleTodo }: TodoForm
     reset,
     formState: { isValid },
   } = useForm<FormData>({ mode: "onChange", defaultValues: { title: title || "", content: content || "" } });
-  const { useCreateTodo, useUpdateTodo } = useTodoMutate();
-  const { mutate: createTodoMutate } = useCreateTodo();
-  const { mutate: updateTodoMutate } = useUpdateTodo();
+  const { useCreateTodoMutation, useUpdateTodoMutation } = useTodoMutation();
+  const { mutate: createTodoMutate } = useCreateTodoMutation();
+  const { mutate: updateTodoMutate } = useUpdateTodoMutation();
 
   const onValid = useCallback(
     (formData: FormData) => {

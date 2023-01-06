@@ -26,7 +26,7 @@ const HomePage = () => {
   return (
     <MainLayout pageTitle="Home">
       <div>
-        <div className="flex flex-col gap-5 w-[800px] max-w-[800px] h-[1100px] max-h-[1100px]">
+        <div className="flex flex-col gap-5 w-[800px] max-w-[800px]">
           <div className="flex gap-5 h-96 max-h-96">
             <TodoList />
             <TodoForm />

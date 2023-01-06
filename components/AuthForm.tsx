@@ -1,6 +1,6 @@
 import { AUTH_STATE } from "constants/auth";
 import { useRouter } from "next/router";
-import useAuthMutate from "queries/useAuthMutate";
+import useAuthMutation from "queries/useAuthMutation";
 import { useCallback } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -22,9 +22,9 @@ const AuthForm = () => {
   const router = useRouter();
   const [status, setStatus] = useState(AUTH_STATE.LOGIN);
   const isSignUp = status === AUTH_STATE.SIGN_UP;
-  const { useSignUp, useLogin } = useAuthMutate();
-  const { mutateAsync: signUpMutateAsync, data: signUpData } = useSignUp();
-  const { mutateAsync: loginMutateAsync, data: loginData } = useLogin();
+  const { useSignUpMutation, useLoginMutation } = useAuthMutation();
+  const { mutateAsync: signUpMutateAsync, data: signUpData } = useSignUpMutation();
+  const { mutateAsync: loginMutateAsync, data: loginData } = useLoginMutation();
 
   const onValid = useCallback(
     async (formData: FormData) => {

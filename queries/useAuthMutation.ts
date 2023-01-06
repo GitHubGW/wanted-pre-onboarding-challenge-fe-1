@@ -2,8 +2,8 @@ import { useMutation } from "react-query";
 import AuthApi from "api/auth";
 import { SignUpParams, LoginParams } from "types/auth";
 
-const useAuthMutate = () => {
-  const useSignUp = () => {
+const useAuthMutation = () => {
+  const useSignUpMutation = () => {
     const result = useMutation({
       mutationFn: (params: SignUpParams) => AuthApi.signUp(params),
       onSuccess: (response) => {
@@ -16,7 +16,7 @@ const useAuthMutate = () => {
     return result;
   };
 
-  const useLogin = () => {
+  const useLoginMutation = () => {
     const result = useMutation({
       mutationFn: (params: LoginParams) => AuthApi.login(params),
       onSuccess: (response) => {
@@ -29,7 +29,7 @@ const useAuthMutate = () => {
     return result;
   };
 
-  return { useSignUp, useLogin };
+  return { useSignUpMutation, useLoginMutation };
 };
 
-export default useAuthMutate;
+export default useAuthMutation;

@@ -2,8 +2,8 @@ import useTodoQuery from "queries/useTodoQuery";
 import TodoItem from "./TodoItem";
 
 const TodoList = () => {
-  const { useGetTodos } = useTodoQuery();
-  const { data: todosData, isLoading } = useGetTodos();
+  const { useGetTodosQuery } = useTodoQuery();
+  const { data: todosData, isLoading } = useGetTodosQuery();
 
   return (
     <div className="border-gray-200 rounded-2xl bg-white px-10 py-8 shadow-xl w-full overflow-y-scroll">

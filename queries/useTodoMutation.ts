@@ -3,10 +3,10 @@ import TodoApi from "api/todo";
 import { useQueryClient, useMutation } from "react-query";
 import { CreateTodoParams, UpdateTodoParams, DeleteTodoParams } from "types/todo";
 
-const useTodoMutate = () => {
+const useTodoMutation = () => {
   const queryClient = useQueryClient();
 
-  const useCreateTodo = () => {
+  const useCreateTodoMutation = () => {
     return useMutation({
       mutationFn: (params: CreateTodoParams) => TodoApi.createTodo({ title: params.title, content: params.content }),
       onSuccess: (response) => {
@@ -19,7 +19,7 @@ const useTodoMutate = () => {
     });
   };
 
-  const useUpdateTodo = () => {
+  const useUpdateTodoMutation = () => {
     return useMutation({
       mutationFn: (params: UpdateTodoParams) => TodoApi.updateTodo({ id: params.id, title: params.title, content: params.content }),
       onSuccess: (response) => {
@@ -33,7 +33,7 @@ const useTodoMutate = () => {
     });
   };
 
-  const useDeleteTodo = () => {
+  const useDeleteTodoMutation = () => {
     return useMutation({
       mutationFn: (params: DeleteTodoParams) => TodoApi.deleteTodo({ id: params.id }),
       onSuccess: (response) => {
@@ -46,7 +46,7 @@ const useTodoMutate = () => {
     });
   };
 
-  return { useCreateTodo, useUpdateTodo, useDeleteTodo };
+  return { useCreateTodoMutation, useUpdateTodoMutation, useDeleteTodoMutation };
 };
 
-export default useTodoMutate;
+export default useTodoMutation;
