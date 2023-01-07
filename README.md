@@ -1,7 +1,6 @@
 <div align="center">
   <img height="100" src="./readme/wanted_logo.png" />
   <h3>프리온보딩 프론트엔드 챌린지 1월</h3>
-  <br /><br />
 </div>
 
 ## 목차
@@ -108,7 +107,7 @@ npm start
 - /auth 경로에 로그인 및 회원가입 기능을 구현하였습니다.
 - 회원가입 및 로그인 성공 시, 전달받은 토큰을 로컬 스토리지에 저장하고 루트 경로로 이동시킵니다.
 - 로그아웃 시, 로컬 스토리지에 저장된 토큰을 삭제하고 /auth 경로로 이동시킵니다.
-  <br/><img src="./readme/signup-login.gif" width="500" />
+  <br/><img src="./readme/signup-login.gif" width="750" />
 
 ```tsx
 // components/AuthForm.tsx
@@ -160,7 +159,7 @@ const onValid = useCallback(
 
 - 투두 추가 및 삭제 버튼을 클릭해 할 일을 생성하거나 삭제할 수 있습니다.
 - 투두 수정 버튼을 클릭하면 수정 모드가 활성화되고, 수정 내용을 제출하거나 취소할 수 있습니다.
-  <br/><img src="./readme/add-delete.gif" width="500" />
+  <br/><img src="./readme/add-delete.gif" width="750" />
 
 ```tsx
 // components/TodoForm.tsx
@@ -206,7 +205,7 @@ const useUpdateTodoMutation = () => {
 ### 전체 투두 조회 및 상세 조회
 
 - 전체 투두 목록과 각각의 투두의 상세 내용을 확인할 수 있습니다.
-  <br/><img src="./readme/edit.gif" width="500" />
+  <br/><img src="./readme/edit.gif" width="750" />
 
 ```tsx
 // components/TodoList.tsx
